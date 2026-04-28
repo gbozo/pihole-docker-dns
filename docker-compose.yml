@@ -1,0 +1,18 @@
+services:
+  pihole-docker-dns:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: pihole-docker-dns:latest
+    container_name: pihole-docker-dns
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      - PDNS_TLD=.internal
+      - PDNS_OUTPUT_FILE=./dnsmasq-docker.conf
+      - PDNS_HOST_IP=192.168.1.3
+      - PDNS_POLL_INTERVAL=60
+      - PDNS_RELOAD_METHOD=none
+    command: -config /dev/null
+    restart: unless-stopped
+    network_mode: host

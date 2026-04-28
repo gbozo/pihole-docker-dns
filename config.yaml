@@ -1,0 +1,15 @@
+output_file: "./dnsmasq-docker.conf"
+host_ip: "192.168.1.3"
+docker_host: "unix:///var/run/docker.sock"
+poll_interval: 60
+
+# Reload configuration
+reload_method: "api"  # none, sighup, api, reconfig
+pihole_host: "http://localhost:8100"
+api_url: "/api/action/restartdns"
+api_user: "admin"
+api_password: "admin"
+api_auth_method: "session"  # session (v6+) or basic (v5)
+
+# Traefik mode - extract hosts from traefik labels
+tld: ".internal"
