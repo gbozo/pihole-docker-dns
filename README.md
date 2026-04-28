@@ -58,7 +58,7 @@ services:
     tmpfs:
       - /tmp:mode=1777
   pihole-docker-dns:
-    image: docker.io/library/pihole-docker-dns:latest
+    image: ghcr.io/gbozo/pihole-docker-dns:latest
     container_name: pihole-docker-dns
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -268,7 +268,7 @@ services:
       - ./dnsmasq-docker.conf:/etc/dnsmasq.d/docker.conf
 
   dns-monitor:
-    image: your-built-image
+    image: ghcr.io/gbozo/pihole-docker-dns:latest
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     command: -reload sighup -container pihole
